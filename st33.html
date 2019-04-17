@@ -1,0 +1,494 @@
+<!doctype html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<style type="text/css">
+    #gameOption{
+        margin-top: 10px;
+    }
+</style>
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+    
+
+
+        /* Mixin's */  
+        @mixin transition {
+        -webkit-transition: all 0.5s ease-in-out;
+        -moz-transition: all 0.5s ease-in-out;
+        transition: all 0.5s ease-in-out;
+        }
+        @mixin corners ($radius) {
+        -moz-border-radius: $radius;
+        -webkit-border-radius: $radius;
+        border-radius: $radius; 
+        -khtml-border-radius: $radius; 
+        }
+
+        body {
+        background:$base-color;
+        font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+        height:100%;
+        }
+
+        .wrapper {
+        width: 1240px;
+        margin:  auto;
+        color:white;
+        text-align:right;
+        }
+
+        h1, h2, h3 {
+          font-family: 'Roboto', sans-serif;
+          font-weight: 100;
+          font-size: 2.6em;
+          text-transform: uppercase;
+        }
+
+        #seconds, #tens{
+          font-size:2em;
+        }
+
+        button{
+        @include corners (5px);
+        background:$base-color;
+        color:$white;
+        border: solid 1px $white;
+        text-decoration:none;
+        cursor:pointer;
+        font-size:1.2em;
+        padding:18px 10px;
+        width:180px;
+        margin: 10px;
+         outline: none;
+          &:hover{
+            @include transition;
+            background:$white;
+            border: solid 1px $white;
+            color:$base-color;
+            }
+        }
+
+    </style>
+    <script type="text/javascript">
+         
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <meta charset="utf-8" />
+    <title>Jigsaw Puzzle - ZIM Frame</title>
+
+    <!-- Welcome to ZIM at http://zimjs.com - Code Interactive Media Pizzazz! 	        -->
+    <!-- ZIM runs on the HTML Canvas powered by JavaScript and CreateJS http://createjs.com -->
+    <!-- Founded by Inventor Dan Zen - http://danzen.com - Canadian New Media Award Winner 	-->
+    <!-- ZIM is free to use. You can donate to help improve ZIM at http://zimjs.com/donate 	-->
+
+    <script src="https://d309knd7es5f10.cloudfront.net/createjs_1.1_min.js"></script>
+    <script>
+        var zon = true; // set to false to turn off console messages from zim
+        var zns = false; // set to true to require zim namespace - eg. new zim.Frame()
+    </script>
+    <script src="https://d309knd7es5f10.cloudfront.net/zim_6.9.0.js"></script>
+    <!-- use zimjs.com/distill for minified individual functions! -->
+
+    
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
+
+</head>
+
+<body>
+    <!-- canvas with id="myCanvas" is made by zim Frame -->
+    <div class="wrapper">
+        <p><span id="seconds">00</span>:<span id="tens">00</span></p>
+    </div>
+    <div id="gameOption" class="container row">
+  <div class="dropdown col-md-4 col-xs-12">
+    <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown">Change Cut Style
+    <span class="caret"></span></button>
+   <ul class="dropdown-menu ">
+      <li class="dropdown-submenu">
+        <a class="test" tabindex="-1" href="#">Regular <span class="caret"></span></a>
+        <ul class="dropdown-menu dropdown-menu-right">
+          <li><a tabindex="-1" href="./index.html">3x3</a></li>
+          <li><a tabindex="-1" href="./r34.html">3x4</a></li>
+          <li><a tabindex="-1" href="./r44.html">4x4</a></li>
+          <li><a tabindex="-1" href="./r45.html">4x5</a></li>
+          <li><a tabindex="-1" href="./r55.html">5x5</a></li>
+          <li><a tabindex="-1" href="./r66.html">6x6</a></li>
+          <li><a tabindex="-1" href="./r100.html">10x10</a></li>
+
+        </ul>
+      </li>
+      <li class="dropdown-submenu">
+        <a class="test" tabindex="-1" href="#">Star <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a tabindex="-1" href="./s33.html">3x3</a></li>
+          <li><a tabindex="-1" href="./s34.html">3x4</a></li>
+          <li><a tabindex="-1" href="./s44.html">4x4</a></li>
+          <li><a tabindex="-1" href="./s45.html">4x5</a></li>
+          <li><a tabindex="-1" href="./s55.html">5x5</a></li>
+          <li><a tabindex="-1" href="./s66.html">6x6</a></li>
+          <li><a tabindex="-1" href="./s100.html">10x10</a></li>
+        </ul>
+      </li>
+      <li class="dropdown-submenu">
+        <a class="test" tabindex="-1" href="#">Flower <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a tabindex="-1" href="./f33.html">3x3</a></li>
+          <li><a tabindex="-1" href="./f34.html">3x4</a></li>
+          <li><a tabindex="-1" href="./f44.html">4x4</a></li>
+          <li><a tabindex="-1" href="./f45.html">4x5</a></li>
+          <li><a tabindex="-1" href="./f55.html">5x5</a></li>
+          <li><a tabindex="-1" href="./f66.html">6x6</a></li>
+          <li><a tabindex="-1" href="./f100.html">10x10</a></li>
+        </ul>
+      </li>
+      <li class="dropdown-submenu">
+        <a class="test" tabindex="-1" href="#">Straight <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a tabindex="-1" href="./st33.html">3x3</a></li>
+          <li><a tabindex="-1" href="./st34.html">3x4</a></li>
+          <li><a tabindex="-1" href="./st44.html">4x4</a></li>
+          <li><a tabindex="-1" href="./st45.html">4x5</a></li>
+          <li><a tabindex="-1" href="./st55.html">5x5</a></li>
+          <li><a tabindex="-1" href="./st66.html">6x6</a></li>
+          <li><a tabindex="-1" href="./st100.html">10x10</a></li>
+        </ul>
+      </li>
+      <li class="dropdown-submenu">
+        <a class="test" tabindex="-1" href="#">Curve <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a tabindex="-1" href="./c33.html">3x3</a></li>
+          <li><a tabindex="-1" href="./c34.html">3x4</a></li>
+          <li><a tabindex="-1" href="./c44.html">4x4</a></li>
+          <li><a tabindex="-1" href="./c45.html">4x5</a></li>
+          <li><a tabindex="-1" href="./c55.html">5x5</a></li>
+          <li><a tabindex="-1" href="./c66.html">6x6</a></li>
+          <li><a tabindex="-1" href="./c100.html">10x10</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</body>
+
+<script >
+        // SCALING OPTIONS
+        // scaling can have values as follows with full being the default
+        // "fit"    sets canvas and stage to dimensions and scales to fit inside window size
+        // "outside"    sets canvas and stage to dimensions and scales to fit outside window size
+        // "full"   sets stage to window size with no scaling
+        // "tagID"  add canvas to HTML tag of ID - set to dimensions if provided - no scaling
+          
+          var seconds = 00; 
+          var tens = 00; 
+          var appendTens = document.getElementById("tens");
+          var appendSeconds = document.getElementById("seconds");
+          var buttonStart = document.getElementById('button-start');
+          var buttonStop = document.getElementById('button-stop');
+          var buttonReset = document.getElementById('button-reset');
+          var Interval;
+          
+
+          
+          
+           
+          
+          function startTimer () {
+            tens++; 
+            
+            if(tens < 9){
+              appendTens.innerHTML = "0" + tens;
+            }
+            
+            if (tens > 9){
+              appendTens.innerHTML = tens;
+              
+            } 
+            
+            if (tens > 99) {
+              //console.log("seconds");
+              seconds++;
+              appendSeconds.innerHTML = "0" + seconds;
+              tens = 0;
+              appendTens.innerHTML = "0" + 0;
+            }
+            
+            if (seconds > 9){
+              appendSeconds.innerHTML = seconds;
+            }
+          
+          }
+          
+
+        
+        var scaling = "fit"; // this will resize to fit inside the screen dimensions
+        var width = 1024;
+        var height = 768;
+        var countPieces = 0;
+        var totalPieces = 0;
+        // as of ZIM 5.5.0 you do not need to put zim before ZIM functions and classes
+        var frame = new Frame(scaling, width, height);
+        frame.on("ready", function()
+        {
+            zog("ready from ZIM Frame"); // logs in console (F12 - choose console)
+
+            var stage = frame.stage;
+            var stageW = frame.width;
+            var stageH = frame.height;
+            var flag=0;
+            var puzzleX;
+            var puzzleY;
+            frame.outerColor = "#444";
+            frame.color = "#ddd";
+
+            var con = new Container
+
+            // with chaining - can also assign to a variable for later access
+            var imageObj = [];
+            var piecesArrayObj = [];
+            frame.loadAssets(["brave.jpg"], "assets/");
+
+            var label = new Label({
+               text:"CLICK",
+               size:60,
+               font:"Arial",
+               color:"black",
+               rollColor:"red",
+               fontOptions:"bold"
+            });
+            stage.addChild(label);
+            label.x = label.y = 20;
+            label.on("click", function(){zog("clicking");});
+
+
+            frame.on("complete", function() {
+
+
+                imageObj = frame.asset("brave.jpg").clone();
+                imageObj.addTo(con);
+                imageObj.alpha = 0.2;
+
+                var piecesArray = new Array();
+                var horizontalPieces = 3;
+                var verticalPieces = 3;
+                var obj = getQueryString();
+                zog(obj)
+                if(obj)
+                {
+                   horizontalPieces = obj.row;
+                   verticalPieces = obj.column;
+                }
+                var imageWidth = imageObj.width;
+                var imageHeight = imageObj.height;
+                var pieceWidth = Math.round(imageWidth / horizontalPieces);
+                var pieceHeight = Math.round(imageHeight / verticalPieces);
+                var gap = 40;
+                totalPieces = horizontalPieces*verticalPieces;
+
+                puzzleX = frame.width/2-imageWidth/2;
+                puzzleY = frame.height/2-imageHeight/2;
+                imageObj.pos(puzzleX,puzzleY);
+                zog(puzzleX,puzzleY);
+
+                label.text = "Jigsaw Puzzle "+countPieces+"/"+totalPieces;
+
+
+                for (j = 0; j < verticalPieces; j++) {
+                    piecesArrayObj[j] = [];
+                    for (i = 0; i < horizontalPieces; i++) {
+                        var n = j + i * verticalPieces;
+
+                        var offsetX = pieceWidth * i;
+                        var offsetY = pieceHeight * j;
+
+
+                        var x8 = Math.round(pieceWidth / 8);
+                        var y8 = Math.round(pieceHeight / 8);
+
+                        piecesArrayObj[j][i] = new Object();
+                        piecesArrayObj[j][i].right = Math.floor(Math.random() * 2);
+                        piecesArrayObj[j][i].down = Math.floor(Math.random() * 2);
+
+                        if (j > 0) {
+                            piecesArrayObj[j][i].up = 1 - piecesArrayObj[j - 1][i].down;
+                        }
+                        if (i > 0) {
+                            piecesArrayObj[j][i].left = 1 - piecesArrayObj[j][i - 1].right;
+                        }
+
+                        piecesArray[n] = new Rectangle({
+                            width: pieceWidth,
+                            height: pieceHeight,
+
+                        });
+
+
+
+                        var tileObj = piecesArrayObj[j][i];
+                        var s = new Shape
+
+                        var context = s.graphics;
+                        s.drag();
+                        s.mouseChildren = false;
+                        s.addEventListener("pressup", function(e) {
+                            var mc = e.currentTarget;
+
+                            var xx = Math.round(mc.x);
+                            var yy = Math.round(mc.y);
+                            if(countPieces == 0&&flag==0)
+                                {
+                                    var pane = new Pane({width:600,label:"Start?  ", height:250, modal:false, displayClose:false});
+
+                                    var confirm = new Button(120, 50, "OK", "green").center(pane).mov(0,70);
+
+                                    confirm.on("click", function() {
+                                        pane.hide();
+                                        flag=1;
+                                        clearInterval(Interval);
+                                        Interval = setInterval(startTimer, 10);
+
+                                    });
+                                    pane.show();
+                                }
+
+                            if (xx < puzzleX+gap / 2 && xx > puzzleX-gap / 2 && yy < puzzleX+gap / 2 && yy > puzzleY-gap / 2) {
+                                 mc.x = puzzleX;
+                                mc.y = puzzleY;
+                                mc.noDrag();
+                                mc.addTo(mc.parent,0);
+                                mc.mouseChildren = false;
+                                mc.mouseEnabled = false;
+                                mc.hint.visible = false;
+                                countPieces++;
+                                label.text = "Jigsaw Puzzle "+countPieces+"/"+totalPieces;
+                                zog("countPieces",countPieces);
+                                if(countPieces == totalPieces)
+                                {
+                                      clearInterval(Interval);
+ 
+                                    var pane = new Pane({width:600,label:"Your Time:   "+seconds+"."+tens+" s", height:250, modal:false, displayClose:false});
+
+                                    var confirm = new Button(120, 50, "OK", "green").center(pane).mov(0,70);
+
+                                    confirm.on("click", function() {
+                                        pane.hide();
+                                        window.location.replace(window.location.pathname + window.location.search + window.location.hash);
+
+                                    });
+                                    pane.show();
+                                }
+                                stage.update();
+
+                            }
+
+                        });
+                        context.setStrokeStyle(1,"round");
+                       // var commandi1 = context.beginStroke(createjs.Graphics.getRGB(255, 255, 0)).command;
+                        //
+                       var commandi = context.beginBitmapFill(imageObj.image).command;
+
+
+                        context.moveTo(offsetX, offsetY);
+
+
+
+
+                        if (j != 0) {
+                            context.lineTo(offsetX + 1 * x8, offsetY);
+                            if (tileObj.up == 1) {
+                                //context.curveTo(offsetX + 1 * x8, offsetY - 2 * y8, offsetX + 4 * x8, offsetY - 1 * y8);
+                                //context.curveTo(offsetX + 7 * x8, offsetY - 2 * y8, offsetX + 7 * x8, offsetY);
+                            } else {
+                            //context.curveTo(offsetX + 1 * x8, offsetY + 2 * y8, offsetX + 4 * x8, offsetY + 1 * y8);
+                               // context.curveTo(offsetX + 7 * x8, offsetY + 2 * y8, offsetX + 7 * x8, offsetY);
+                            }
+                        }
+                        context.lineTo(offsetX + 8 * x8, offsetY);
+                        if (i != horizontalPieces - 1) {
+                            context.lineTo(offsetX + 8 * x8, offsetY + 1 * y8);
+                            if (tileObj.right == 1) {
+                                //context.curveTo(offsetX + 10 * x8, offsetY + 1 * y8, offsetX + 9 * x8, offsetY + 4 * y8);
+                                //context.curveTo(offsetX + 10 * x8, offsetY + 7 * y8, offsetX + 8 * x8, offsetY + 7 * y8);
+                            } else {
+                                //context.curveTo(offsetX + 6 * x8, offsetY + 1 * y8, offsetX + 7 * x8, offsetY + 4 * y8);
+                                //context.curveTo(offsetX + 6 * x8, offsetY + 7 * y8, offsetX + 8 * x8, offsetY + 7 * y8);
+                            }
+                        }
+                        context.lineTo(offsetX + 8 * x8, offsetY + 8 * y8);
+                        if (j != verticalPieces - 1) {
+                            context.lineTo(offsetX + 7 * x8, offsetY + 8 * y8);
+                            if (tileObj.down == 1) {
+                                //context.curveTo(offsetX + 7 * x8, offsetY + 10 * y8, offsetX + 4 * x8, offsetY + 9 * y8);
+                                //context.curveTo(offsetX + 1 * x8, offsetY + 10 * y8, offsetX + 1 * x8, offsetY + 8 * y8);
+                            } else {
+                                //context.curveTo(offsetX + 7 * x8, offsetY + 6 * y8, offsetX + 4 * x8, offsetY + 7 * y8);
+                                //context.curveTo(offsetX + 1 * x8, offsetY + 6 * y8, offsetX + 1 * x8, offsetY + 8 * y8);
+                            }
+                        }
+                        context.lineTo(offsetX, offsetY + 8 * y8);
+                        if (i != 0) {
+                            context.lineTo(offsetX, offsetY + 7 * y8);
+                            if (tileObj.left == 1) {
+                                //context.curveTo(offsetX - 2 * x8, offsetY + 7 * y8, offsetX - 1 * x8, offsetY + 4 * y8);
+                                //context.curveTo(offsetX - 2 * x8, offsetY + 1 * y8, offsetX, offsetY + 1 * y8);
+                            } else {
+                                //context.curveTo(offsetX + 2 * x8, offsetY + 7 * y8, offsetX + 1 * x8, offsetY + 4 * y8);
+                                //context.curveTo(offsetX + 2 * x8, offsetY + 1 * y8, offsetX, offsetY + 1 * y8);
+                            }
+                        }
+                        context.lineTo(offsetX, offsetY);
+                        s.addTo(con);
+
+                        var fill = new createjs.Graphics.Fill("red");
+
+                        //var newGra = context.append(fill);
+                        var hint = new Shape();//s.clone(true);
+                        hint.mouseChildren = false;
+                        hint.mouseEnabled = false;
+                        s.hint = hint;
+                        hint.graphics = context.clone(true);
+                        hint.pos(puzzleX,puzzleY);
+                       // newGra.graphics = newGra;
+                        hint.graphics._fill = fill;
+                        hint.graphics._fill.style = null;
+
+                        hint.addTo(con,0);
+                        //s.animate({obj:{x:frame.width-offsetX-pieceWidth,y:frame.height-offsetY-pieceHeight}, time:700});
+                        //s.animate({obj:{x:-offsetX,y:-offsetY}, time:700});
+                        s.animate({obj:{x:rand(-offsetX,frame.width-offsetX-pieceWidth),y:rand(-offsetY,frame.height-offsetY-pieceHeight)}, time:700});
+
+                    }
+                }
+
+
+                con.addTo(stage);
+                /*con.x -= imageWidth/2;
+                con.y -= imageHeight/2;*/
+                stage.update();
+
+
+
+            }); // end asset complete
+
+
+            stage.update(); // this is needed to show any changes
+
+        }); // end of ready
+    </script>
+    <script type="text/javascript">
+  $(document).ready(function(){
+  $('.dropdown-submenu a.test').on("click", function(e){
+    $(this).next('ul').toggle();
+    e.stopPropagation();
+    e.preventDefault();
+  });
+});
+</script>
+
+</html>

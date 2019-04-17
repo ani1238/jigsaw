@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="/home/govind/bootstrap-submenu-3.0.0/dist/css/bootstrap-submenu.css">
+</head>
+<body>
+
+	   <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" data-submenu>
+        Dropdown
+      </button>
+
+      <div class="dropdown-menu">
+        {% include dropdown-menu-elements.html placement='dropright' %}
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-4 mb-3">
+    <div class="dropdown pull-right">
+      <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" data-submenu>
+        Dropdown
+      </button>
+
+      <div class="dropdown-menu dropdown-menu-right">
+        {% include dropdown-menu-elements.html placement='dropleft' %}
+      </div>
+</div>
+</body>
+<script src="/home/govind/bootstrap-submenu-3.0.0/dist/js/bootstrap-submenu.js" defer></script>
+</html>

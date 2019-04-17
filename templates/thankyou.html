@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, user-scalable=no" />
+	<title>Jigsaw Puzzle</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<style type="text/css">
+
+
+#form{
+        background-color: white;
+        position: fixed;
+        top: -20%;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 250px;
+        height: 250px;
+        margin: auto;
+        z-index: 1;
+        padding-left: 20px;
+        padding-right: 20px;
+        border-radius:25px; 
+        display: inline-block;
+    }
+	</style>
+<div id="form">
+		<h1>Thank You for Playing</h1>
+		<br>
+	<div id="gameOption" class="container row">
+	  <div class="dropdown col-md-4 col-xs-12">
+	    <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown">Play Again
+	    <span class="caret"></span></button>
+	    <ul class="dropdown-menu ">
+	      <li class="dropdown-submenu">
+	        <a class="test" tabindex="-1" href="#">Regular <span class="caret"></span></a>
+	        <ul class="dropdown-menu dropdown-menu-right">
+	          <li><a tabindex="-1" href="../regular/1">3x3</a></li>
+	          <li><a tabindex="-1" href="../regular/2">3x4</a></li>
+	          <li><a tabindex="-1" href="../regular/3">4x4</a></li>
+	          <li><a tabindex="-1" href="../regular/4">4x5</a></li>
+	          <li><a tabindex="-1" href="../regular/5">5x5</a></li>
+	          <li><a tabindex="-1" href="../regular/6">6x6</a></li>
+	          <li><a tabindex="-1" href="../regular/7">10x10</a></li>
+
+	        </ul>
+	      </li>
+	      <li class="dropdown-submenu">
+	        <a class="test" tabindex="-1" href="#">Star <span class="caret"></span></a>
+	        <ul class="dropdown-menu">
+	          <li><a tabindex="-1" href="../star/1">3x3</a></li>
+	          <li><a tabindex="-1" href="../star/2">3x4</a></li>
+	          <li><a tabindex="-1" href="../star/3">4x4</a></li>
+	          <li><a tabindex="-1" href="../star/4">4x5</a></li>
+	          <li><a tabindex="-1" href="../star/5">5x5</a></li>
+	          <li><a tabindex="-1" href="../star/6">6x6</a></li>
+	          <li><a tabindex="-1" href="../star/7">10x10</a></li>
+	        </ul>
+	      </li>
+	      <li class="dropdown-submenu">
+	        <a class="test" tabindex="-1" href="#">Flower <span class="caret"></span></a>
+	        <ul class="dropdown-menu">
+	          <li><a tabindex="-1" href="../flower/1">3x3</a></li>
+	          <li><a tabindex="-1" href="../flower/2">3x4</a></li>
+	          <li><a tabindex="-1" href="../flower/3">4x4</a></li>
+	          <li><a tabindex="-1" href="../flower/4">4x5</a></li>
+	          <li><a tabindex="-1" href="../flower/5">5x5</a></li>
+	          <li><a tabindex="-1" href="../flower/6">6x6</a></li>
+	          <li><a tabindex="-1" href="../flower/7">10x10</a></li>
+	        </ul>
+	      </li>
+	      <li class="dropdown-submenu">
+	        <a class="test" tabindex="-1" href="#">Straight <span class="caret"></span></a>
+	        <ul class="dropdown-menu">
+	          <li><a tabindex="-1" href="../straight/1">3x3</a></li>
+	          <li><a tabindex="-1" href="../straight/2">3x4</a></li>
+	          <li><a tabindex="-1" href="../straight/3">4x4</a></li>
+	          <li><a tabindex="-1" href="../straight/4">4x5</a></li>
+	          <li><a tabindex="-1" href="../straight/5">5x5</a></li>
+	          <li><a tabindex="-1" href="../straight/6">6x6</a></li>
+	          <li><a tabindex="-1" href="../straight/7">10x10</a></li>
+	        </ul>
+	      </li>
+	      <li class="dropdown-submenu">
+	        <a class="test" tabindex="-1" href="#">Curve <span class="caret"></span></a>
+	        <ul class="dropdown-menu">
+	          <li><a tabindex="-1" href="../curve/1">3x3</a></li>
+	          <li><a tabindex="-1" href="../curve/2">3x4</a></li>
+	          <li><a tabindex="-1" href="../curve/3">4x4</a></li>
+	          <li><a tabindex="-1" href="../curve/4">4x5</a></li>
+	          <li><a tabindex="-1" href="../curve/5">5x5</a></li>
+	          <li><a tabindex="-1" href="../curve/6">6x6</a></li>
+	          <li><a tabindex="-1" href="../curve/7">10x10</a></li>
+	        </ul>
+	      </li>
+	    </ul>
+	  </div>
+</div>
+		
+	</div>
+</head>
+<body>
+	<script type="text/javascript">
+		 $(document).ready(function(){
+		  $('.dropdown-submenu a.test').on("click", function(e){
+		    $(this).next('ul').toggle();
+		    e.stopPropagation();
+		    e.preventDefault();
+		  });
+		});
+ 
+	</script>
+	
+</body>
+</html>
